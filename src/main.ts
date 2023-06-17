@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core'
 import * as cookieParser from 'cookie-parser'
 import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
+import { ValidationPipe } from '@nestjs/common'
 
 async function bootstrap() {
 	const PORT = process.env.PORT
@@ -10,6 +11,7 @@ async function bootstrap() {
 	
 	app.use(cookieParser())
 	app.setGlobalPrefix('/api')
+	app.useGlobalPipes(new ValidationPipe({ transform: true }))
 
 	const config = new DocumentBuilder()
 		.setTitle('React Query')

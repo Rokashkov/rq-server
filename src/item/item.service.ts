@@ -12,20 +12,26 @@ export class ItemService {
 		return item
 	}
 
+	async getById (id: number) {
+		const item = await this.prisma.item.findUnique({ where: { id } })
+
+		return item
+	}
+
 	async create (dto: CreateItemDto) {
 		const item = await this.prisma.item.create({ data: dto })
 
 		return item
 	}
 
-	async update (dto: CreateItemDto) {
-		const item = await this.prisma.item.create({ data: dto })
+	async updateById (id: number, dto: CreateItemDto) {
+		const item = await this.prisma.item.update({ where: { id }, data: dto })
 
 		return item
 	}
 
-	async delete (dto: CreateItemDto) {
-		const item = await this.prisma.item.create({ data: dto })
+	async deleteById (id: number) {
+		const item = await this.prisma.item.delete({ where: { id } })
 
 		return item
 	}
