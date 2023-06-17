@@ -20,7 +20,8 @@
     "rules": {
         "indent": [
             "error",
-            "tab"
+            "tab",
+			{ "ignoredNodes": ["PropertyDefinition"] }
         ],
         "linebreak-style": 0,
         "quotes": [
